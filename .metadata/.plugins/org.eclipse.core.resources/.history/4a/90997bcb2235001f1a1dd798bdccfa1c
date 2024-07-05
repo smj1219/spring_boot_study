@@ -1,0 +1,23 @@
+package com.example.boot01.service;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class HomeServiceImpl implements HomeService {
+
+	@Override
+	public void clean(String name) {
+		
+	}
+
+	@Override
+	public void wash(String name) {
+		
+	}
+
+	@Override
+	public void hole(String name) {
+		
+	}
+	
+}

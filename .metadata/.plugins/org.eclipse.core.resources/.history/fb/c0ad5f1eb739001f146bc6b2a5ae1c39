@@ -1,0 +1,17 @@
+package com.example.boot05.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class MemberController {
+
+		@GetMapping("/membeer/list")
+		public String list(Model model) {
+			//DB 에서 회원 목록(List<MemberDto>)을 얻어와서 Model 객체에 담고
+			
+			//타임리프 view 페이지를 이용해서 응답하기
+			return "member/list";
+		}
+}

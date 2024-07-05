@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>templates/file/uploadform.html</title>
+</head>
+<body>
+	<div class="container">
+		
+	</div>
+</body>
+</html>

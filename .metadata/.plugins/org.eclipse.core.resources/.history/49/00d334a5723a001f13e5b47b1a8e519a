@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="container">
+		<h1>인덱스 페이지 입니다.</h1>
+		<p>
+			오늘의 운세 : <strong th:text="${fortuneToday}"></strong>
+		</p>
+	</div>
+</body>
+</html>

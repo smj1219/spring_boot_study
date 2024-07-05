@@ -1,0 +1,5 @@
+package com.example.boot06.config;
+
+public class WebConfig {
+
+}

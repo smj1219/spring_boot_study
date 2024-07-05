@@ -1,0 +1,29 @@
+package com.example.boot04.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class TestController {
+	@GetMapping("/notice")
+	public String notice(Model model) {
+		//DB 에서 읽어온 공지사항이라고 가정
+		List<String> list=new ArrayList<String>();
+		list.add("장마철입니다");
+		list.add("더위에 주의하세요");
+		list.add("어쩌구 저쩌구");
+		// thymeleafs 템플릿 엔진에서 사용할 데이터를 Model 객체에 담기
+		model.addAttribute("list",list);
+		// thymeleafs/sub/notice.html 을 해석한 결과를 응답하기
+		return "sub/notice";
+	}
+	@GetMapping("/sub/play")
+	public String play() {
+		// /thymeleafs/sub/play.html 템플릿을 해석한 결과를 응답해라
+		return "sub/play";
+	}
+}

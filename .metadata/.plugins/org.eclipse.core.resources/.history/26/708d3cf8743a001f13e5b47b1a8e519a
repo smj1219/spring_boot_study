@@ -1,0 +1,5 @@
+spring.application.name=Boot06_Interceptor
+
+server.port=8888
+server.servlet.context-path=/boot06
+server.servlet.session.tracking-modes=cookie

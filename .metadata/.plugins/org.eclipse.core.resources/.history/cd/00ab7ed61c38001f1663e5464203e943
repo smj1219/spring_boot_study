@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="container">
+		<h1>인덱스 페이지 입니다.</h1>
+		<ul>
+			<li><a href="/boot02/hello">hello spring boot!</a></li>
+			<li><a href="/boot02/fortune">오늘의 운세</a></li>
+			<li><a href="/boot02/member">회원 한명의 정보</a></li>
+			<li><a href="/boot02/member2">회원 한명의 정보2</a></li>
+		</ul>
+	</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="container">
+		<a th:href="@{/todo/insertform}">할 일 추가 기능</a>
+		<h1>할 일 목록 입니다</h1>
+		<table>
+			<thead>
+				<tr>
+					<th>번호</th>
+					<th>할일</th>
+					<th>날짜</th>
+					<th>수정</th>
+					<th>삭제</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="tmp : ${list}">
+					<td>[[${tmp.num}]]</td>
+					<td th:text="${tmp.content}"></td>
+					<td th:text="${tmp.regdate}"></td>
+					<td><a th:href="@{/todo/updateform(num=${tmp.num})}">수정</a></td>
+					<td><a th:href="@{/todo/delete(num=${tmp.num})}">삭제</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

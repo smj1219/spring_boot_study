@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div th:fragment="myFooter" style="border: 1px solid red; background-color: yellow;">
+		<p>myFooter 입니다</p>
+		<p>어쩌구...</p>
+		<p>저쩌구...</p>
+	</div>
+	
+	<div th:fragment="yourFooter" style="border: 1px solid red; background-color: yellow;">
+		<p>myFooter 입니다</p>
+		<p>어쩌구...</p>
+		<p>저쩌구...</p>
+	</div>
+</body>
+</html>

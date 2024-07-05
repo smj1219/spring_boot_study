@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>templates/home.html</title>
+</head>
+<body>
+	<!-- 웹브라우저가 무시하는 주석 -->
+	<!--/* thymeleaf 가 무시하는 주석 */-->
+	<div class="container">
+		<h1>인덱스 페이지 입니다</h1>
+		<p>
+			오늘의 인물 : <strong>[[${personToday}]]</strong>
+		</p>
+		<p>
+			오늘의 인물 : <strong th:text="${personToday}"></strong>
+		</p>
+		<ul>
+			<li><a href="/boot04/sub/play">놀러가기</a></li>
+			<li><a th:href="@{/sub/play}">놀러가기2</a></li>
+			<li><a th:href="@{/notice/list}">공지사항 목록</a></li>
+		</ul>
+	</div>
+	<script>
+		let myName="[[${personToday}]]";
+	</script>
+</body>
+</html>
