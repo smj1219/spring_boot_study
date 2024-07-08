@@ -23,8 +23,6 @@ import com.example.boot07.dto.FileDto;
 import lombok.extern.slf4j.Slf4j;
 
 
-
-
 @Slf4j
 @Controller
 public class FileController {
@@ -64,7 +62,7 @@ public class FileController {
 		//저장할 파일의 이름을 Universal Unique 한 ID 로 저장하기 위해
 		String saveFileName=UUID.randomUUID().toString();
 		//저장할 파일의 전체 경로 구성하기 "C:\Users\ user\playground\ upload"+"\"+"saveFileName"
-		//File.separator_운영체제에 따라 다른 파일 구분자를 입력해준다(window=> \ )
+		//File.separator_운영체제에 따라 다른 파일 구분자를 입력해준다(window=> \ , 리눅스 => / )
 		String filePath=fileLocation + File.separator + saveFileName;
 		try {
 			//업로드된 파일을 이동시킬 목적지 File 객체 생성
@@ -138,8 +136,8 @@ public class FileController {
 		InputStreamResource isr=new InputStreamResource(is);
 		//ResponseEntity 객체에 응답 헤더 정보와 응답 body 를 넣어서 
 		ResponseEntity<InputStreamResource> resEntity=ResponseEntity.ok()
-			.headers(headers)
-			.body(isr);
+			.headers(headers)// 웹브라우저에게 어떤 응답을 할지 자세한 정보를 미리 알려주는 용도
+			.body(isr); // 바이트 알갱이를 뽑아내기 위한 용도
 		//리턴해주면 자동으로 다운로드가 된다. 
 		return resEntity;
 	}

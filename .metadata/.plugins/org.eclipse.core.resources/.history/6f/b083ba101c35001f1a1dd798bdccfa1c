@@ -1,5 +1,0 @@
-package com.example.helloboot.auto;
-
-public class MyCar implements Car {
-
-}
