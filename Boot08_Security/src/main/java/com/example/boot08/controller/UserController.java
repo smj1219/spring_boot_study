@@ -3,9 +3,38 @@ package com.example.boot08.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.service.annotation.GetExchange;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 public class UserController {
+	
+	//세션 허용 갯수 초과시
+	@GetMapping("/user/expired")
+	public String userExpired() {
+		return "user/expired";
+	}
+	
+	
+	//권한 부족시 or 403 인 경우
+	@RequestMapping("/user/denied") // get, post 매핑 둘 다 가능
+	public String userDenied() {
+		return "user/denied";
+	}
+	
+	//ROLE_STAFF, ROLE_ADMIN 만 요청 가능
+	@GetMapping("/staff/user/list")
+	public String userList() {
+		return "user/list";
+	}
+	//ROLE_ADMIN 만 요청 가능
+	@GetMapping("/admin/user/manage")
+	public String userManage() {
+		return "user/manage";
+	}
+	
 	
 	@GetMapping("/user/loginform")
 	public String loginform() {
