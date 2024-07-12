@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="file">
+	<select id="getFileList" resultType="com.example.boot11.dto.FileDto">
+		SELECT num, writer, title, orgFileName, fileSize, regdate 
+		FROM board_file
+		ORDER BY num DESC
+	</select>
+	<select id="getFile">
+		
+	</select>
+	<insert id="insert" parameterType="com.example.boot11.dto.FileDto">
+		INSERT INTO board_file
+		(num, writer, title, orgFileName, saveFileName, fileSize, regdate)
+		VALUES(board_file_seq.NEXTVAL, writer=#{writer}, title=#{title}, 
+		orgFileName=#{orgFileName}, saveFileName=#{saveFileName}, fileSize=#{fileSize}, SYSDATE)
+	</insert>
+	<delete id="deleteFile">
+	
+	</delete>
+</mapper>

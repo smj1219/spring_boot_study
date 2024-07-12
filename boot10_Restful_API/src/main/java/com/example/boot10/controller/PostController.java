@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.boot10.dao.PostDao;
 import com.example.boot10.dto.PostDto;
+import com.example.boot10.service.PostService;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,54 +23,39 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController //@ResponseBody 의 기능이 모든 메소드에 포함된다.
 public class PostController {
-	@Autowired
-	private PostDao dao;
+	//필요한 서비스 객체를 DI받는다
+	@Autowired private PostService service;
 	
 	@GetMapping("/post")
 	public List<PostDto> getList(){
-		return dao.getList();
+		//글 전체 목록을 서비스 객체를 이용해서 얻어온다음
+		List<PostDto> list=service.getAll();
+		return list;
 	}
 	
 	@GetMapping(value="/post/{id}")
 	public PostDto getdata(@PathVariable("id") int id) {
-		PostDto dto = dao.getdata(id);
-		return dto;
+		//서비스를 이용해서 글을 저장하고 리턴해주는 PosrDto 를 컨트롤러에서 리턴해준다
+		return service.getContent(id);
 	}
-	/*
-	@PostMapping("/post")
-	public PostDto insert(String title, String author) {
-		// @Bulider 의 기능을 이용해서 PostDto 객체에 데이터를 담으면서 객체의 참조값 얻어내기
-		PostDto dto=PostDto.builder().title(title).author(author).build();
-		//dao 를 이용해서 dto 에 저장된 정보를 DB에 저장하기
-		dao.insert(dto);
-		return dto;
-	}
-	*/
-	
-	//위 메소드를 간략하게 줄인 내용 
+ 
 	@PostMapping("/post")
 	public PostDto insert(PostDto dto) {
-		//글의 번호를 미리 얻어낸다
-		int id=dao.getSequence();
-		//dao 에 글번호를 담는다
-		dto.setId(id);
-		dao.insert(dto);
-		return dto;
+		return service.addContent(dto);
 	}
 	
+	// 삭제한 글 정보를 리턴하는 delete 메소드
 	@DeleteMapping(value="/post/{id}")
-	public String delete(@PathVariable("id") int id) {
-		dao.delete(id);
-		
-		return " delete";
+	public PostDto delete(@PathVariable("id") int id) {
+		return service.removeContent(id);
 	}
 	
 	@PutMapping(value="/post/{id}")
 	public PostDto update(@PathVariable("id")int id, PostDto dto) {
+		//PostDto 에 경로 변수로 넘어오는 수정할 글번호도 담아서
 		dto.setId(id);
-		dao.update(dto);
-		
+		//서비스를 이용해서 수정한다
+		service.updateContent(dto);
 		return dto;
 	}
-
 }
