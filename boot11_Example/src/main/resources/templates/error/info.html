@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>/error/info.html</title>
+</head>
+<body>
+	<div class="container">
+		<h3>에러가 발생했습니다</h3>
+		<p>
+			에러 정보 : <strong th:text="${exception.message}"></strong>
+			<br>
+			<a th:href="@{/}">인덱스로 가기</a>
+		</p>
+	</div>
+</body>
+</html>

@@ -1,5 +1,0 @@
-package com.example.boot06.interceptor;
-
-public class LoginInterceptor {
-
-}

@@ -47,4 +47,10 @@ public class ExceptionController {
 		// /user/pwd_updateform 으로 요청을 다시하라고 리다일렉트 응답
 		return "redirect:/user/pwd_updateform";
 	}
+	
+	@ExceptionHandler(NotOwnerException.class)
+	public String notOwner(NotOwnerException noe, Model model) {
+		model.addAttribute("exception",noe);
+		return "error/info";
+	}
 }
