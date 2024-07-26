@@ -37,13 +37,13 @@
         <nav>
             <ul class="pagination" th:if="${totalPageCount ne 0}">
                 <li th:if="${startPageNum != 1}" class="page-item">
-                    <a class="page-link" th:href="@{'/file/list?pageNum=' + ${startPageNum - 1} + '&condition=' + ${dto.condition} + '&keyword=' + ${dto.keyword} }">Prev</a>
+                    <a class="page-link" th:href="@{'/file/list?pageNum=' + ${startPageNum - 1} + '&condition=' + ${dto.condition} + '&keyword=' + ${dto.keyword}) }">Prev</a>
                 </li>
                 <li th:each="i : ${#numbers.sequence(startPageNum, endPageNum)}" class="page-item" th:classappend="${i} == ${pageNum} ? 'active'">
                     <a class="page-link" th:href="@{/file/list(pageNum=${i},condition=${dto.condition},keyword=${dto.keyword})}">[[${i}]]</a>
                 </li>
                 <li th:if="${endPageNum < totalPageCount}" class="page-item">
-                    <a class="page-link" th:href="@{/file/list(pageNum=${endPageNum+1},condition=${dto.condition},keyword=${dto.keyword}}">Next</a>
+                    <a class="page-link" th:href="@{/file/list(pageNum=${endPageNum+1},condition=${dto.condition},keyword=${dto.keyword})}">Next</a>
                 </li>
             </ul>
         </nav>

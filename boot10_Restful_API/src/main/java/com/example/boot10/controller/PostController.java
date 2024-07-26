@@ -18,10 +18,12 @@ import com.example.boot10.service.PostService;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
 
 @RestController //@ResponseBody 의 기능이 모든 메소드에 포함된다.
+@RequestMapping("/v1")
 public class PostController {
 	//필요한 서비스 객체를 DI받는다
 	@Autowired private PostService service;

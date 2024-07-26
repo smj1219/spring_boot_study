@@ -33,6 +33,7 @@
 			<li><a th:href="@{/inc}">include 테스트</a></li>
 			<li><a th:href="@{/unescape}">unescape html 테스트</a></li>
 		</ul>
+		<p th:text="@{/}"></p>
 	</div>
 	<script>
 		let myName="[[${personToday}]]";
@@ -41,5 +42,8 @@
 		/templates/include/footer.html 페이지에 있는 myFooter 라는 이름의 조각을 이 블럭 안에 넣어라 
 	*/-->
 	<th:block th:insert="~{/include/footer :: myFooter}"></th:block>
+	
+	
+	
 </body>
 </html>
