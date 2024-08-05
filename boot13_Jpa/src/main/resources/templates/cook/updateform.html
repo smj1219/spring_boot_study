@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="container">
+		<h1>요리 수정 양식</h1>
+		<form th:action="@{/cook/update}" method="post">
+			<div>
+				<label for="num">번호</label>
+				<input type="text" name="num" th:value="${dto.num}" readonly/>
+			</div>
+			<div>
+				<label for="name">요리명</label>
+				<input type="text" name="name" th:value="${dto.name}"  />
+			</div>
+			<div>
+				<label for="content">만드는 방법</label>
+				<input type="text" name="content" th:value="${dto.content}"  />
+			</div>
+			
+			<button type="submit">수정확인</button>
+			<button type="reset">취소</button>
+		</form>
+	</div>
+</body>
+</html>

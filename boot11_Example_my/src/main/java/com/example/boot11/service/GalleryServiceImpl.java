@@ -116,24 +116,26 @@ public class GalleryServiceImpl implements GalleryService {
 
 	@Override
 	public void insert(GalleryDto dto) {
-		MultipartFile image=dto.getImage();
-		//저장할 파일의 이름 겹치지 않는 유일한 문자열로 얻어내기
-		String saveFileName=UUID.randomUUID().toString();
-		//저장할 파일의 전체 경로 구성하기                    
-		String filePath=fileLocation+File.separator+saveFileName;
-		try {
-			//업로드된 파일을 이동시킬 목적지 File 객체
-			File f=new File(filePath);
-			//MultipartFile 객체의 메소드를 통해서 실제로 이동시키기(전송하기)
-			image.transferTo(f);
-		}catch(Exception e) {
-			e.printStackTrace();
+	
+		for(MultipartFile tmp:dto.getImages()) {
+			String saveFileName=UUID.randomUUID().toString();
+			//저장할 파일의 전체 경로 구성하기                    
+			String filePath=fileLocation+File.separator+saveFileName;
+			try {
+				//업로드된 파일을 이동시킬 목적지 File 객체
+				File f=new File(filePath);
+				//MultipartFile 객체의 메소드를 통해서 실제로 이동시키기(전송하기)
+				tmp.transferTo(f);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+			dto.setWriter(userName);
+			dto.setCaption(dto.getCaption());
+			dto.setSaveFileName(saveFileName);
+			dao.insertGallery(dto);
 		}
-		String userName = SecurityContextHolder.getContext().getAuthentication().getName();
-		dto.setWriter(userName);
-		dto.setCaption(dto.getCaption());
-		dto.setSaveFileName(saveFileName);
-		dao.insertGallery(dto);
+			
 	}
 
 	@Override

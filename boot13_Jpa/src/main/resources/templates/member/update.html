@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>templates/member/update.html</title>
+</head>
+<body>
+	<script>
+		// 수정한 회원의 이름이 "김구라" 라면 아래의 code 는 alert("김구라 님의 정보를 수정 했습니다."); 가 된다.
+		alert("[[${param.name}]] 님의 정보를 수정했습니다");
+		//아래의 code 는 location..href="/boot05/member/list";가 된다.
+		location.href="[[@{/member/list}]]"
+	</script>
+</body>
+</html>

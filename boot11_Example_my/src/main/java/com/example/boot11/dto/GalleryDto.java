@@ -19,7 +19,7 @@ public class GalleryDto {
 	private String caption;
 	private String saveFileName;
 	private String regdate;
-	private MultipartFile image;
+	private MultipartFile[] images;
 	
 	private int pageNum=1;
 	private int startRowNum;
