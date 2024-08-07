@@ -76,8 +76,9 @@ public class Boot13JpaApplication {
 		
 			System.out.println(tmp);
 		}
-		//아래의 메소드를 호출
-		initEmpDept();
+		
+		//아래의 메소드를 호출 (oracle DB 를 사용할때는 주석처리, h2 DB 에서만 가능)
+		//initEmpDept();
 	}
 	
 	public void initEmpDept() {
@@ -112,7 +113,7 @@ public class Boot13JpaApplication {
 			queries.add("INSERT INTO EMP (empno, ename, job, mgr, hiredate, sal, comm, deptno) VALUES (7902,'FORD','ANALYST',7566,parsedatetime('03-12-1981','dd-MM-yyyy'),3000,NULL,20);");
 			queries.add("INSERT INTO EMP (empno, ename, job, mgr, hiredate, sal, comm, deptno) VALUES (7934,'MILLER','CLERK',7782,parsedatetime('23-01-1982','dd-MM-yyyy'),1300,NULL,10);");
 
-			//반복문 돌면서 실행할 쿼리를 얻어내서 
+			//반복문 돌면서 실행할 쿼리를 얻어내서
 			for (String query : queries) {
 				//직접 실행한다 
 			    em.createNativeQuery(query).executeUpdate();

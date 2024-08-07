@@ -20,6 +20,13 @@ public class DeptDto {
 	private int count; //근무하는 인원수
 	private List<String> names;//근무하는 사원의 이름들
 	
+	//jpql 에서 테스트할 생성자 만들기
+	public DeptDto(int deptno, String dname, String loc) {
+		this.deptno=deptno;
+		this.dname=dname;
+		this.loc=loc;
+	}
+	
 	
 	//entity 를 Dto로 전환하는 메소드
 	public static DeptDto toDto(Dept dept) {
