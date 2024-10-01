@@ -1,15 +1,23 @@
 package com.example.boot14.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.boot14.dto.UserDto;
+import com.example.boot14.service.UserService;
 import com.example.boot14.util.JwtUtil;
+import org.springframework.web.bind.annotation.RequestParam;
+
+
 
 @RestController
 public class UserController {
@@ -21,7 +29,10 @@ public class UserController {
 	@Autowired
 	private AuthenticationManager authManager;
 	
-	@ResponseBody
+	@Autowired
+	private UserService userService;
+	
+
 	@PostMapping("/auth")
 	public String auth(@RequestBody UserDto dto ) throws Exception {
 		try {
@@ -39,4 +50,52 @@ public class UserController {
 		String token=jwtUtil.generateToken(dto.getUserName());
 		return "Bearer+"+token;
 	}
+	//경로 변수에 전달되는 입력한 userName 이 사용가능한지 여부를 json 으로 응답하는 메소드 
+	@GetMapping("/user/check_username/{userName}")
+	public Map<String, Object> checkUserName(@PathVariable("userName") String userName){
+		
+		return Map.of("canUse", userService.canUse(userName));
+	}
+	
+	@PostMapping("/user")
+	public Map<String, Object> addUser(@RequestBody UserDto dto){
+		userService.addUser(dto);
+		return Map.of("isSuccess", true);
+	}	
+	
+	@GetMapping("/user")
+	public UserDto getInfo() {
+		
+		return userService.getInfo();
+	}
+	
+	@PatchMapping("/user")
+	public Map<String, Object> updateUser(UserDto dto) {
+		userService.updateUser(dto);
+		return Map.of("isSuccess", true);
+	}
+	
+	@PatchMapping("/user/password")
+	public Map<String, Object> updatePassword(@RequestBody UserDto dto){
+		userService.updatePassword(dto);
+		return Map.of("isSuccess", true);
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

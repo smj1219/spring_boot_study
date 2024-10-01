@@ -1,6 +1,6 @@
 package com.example.boot10.config;
 
-import org.springdoc.core.customizers.OpenApiHateoasLinksCustomizer;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

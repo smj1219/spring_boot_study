@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -14,9 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
 import com.example.boot14.filter.JwtFilter;
-
 
 
 @Configuration //설정 클래스라고 알려준다
@@ -33,8 +32,10 @@ public class SecurityConfig {
 	@Bean //메소드에서 리턴되는 SecurityFilterChain 을 bean 으로 만들어준다.
 	public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
 		//화이트 리스트를 미리 배열에 넣어두기
-		String[] whiteList= {"/image/upload","/upload/images/**", "/file/upload", "/file/download", 
-				"/image/upload2", "/members/**","/auth", "/post/**", "/gallery"};
+		String[] whiteList= {"/image/upload","/upload/images/**", "/file/upload", "/file/download",
+				"/image/upload2", "/members/**", "/auth", "/gallery", "/gallery/**", 
+				"/editor_upload","/editor/images/**", "/cafes", "/cafes/**", "/members",
+				"/user/check_username/*"};
 
 		//메소드의 매개변수에 HttpSecurity 의 참조값이 전달되는데 해당 객체를 이용해서 설정을 한다음
 		httpSecurity
@@ -46,6 +47,7 @@ public class SecurityConfig {
 		.authorizeHttpRequests(config -> 
 			config
 				.requestMatchers(whiteList).permitAll() //whiteList 요청은 로그인과 상관없이 모두 허용
+				.requestMatchers(HttpMethod.POST, "/user").permitAll()
 				.requestMatchers("/admin/**").hasRole("ADMIN")
 				.requestMatchers("/staff/**").hasAnyRole("ADMIN", "STAFF")
 				.anyRequest().authenticated() //위에 명시한 이외의 모든 요청은 로그인해야지 요청가능하게
