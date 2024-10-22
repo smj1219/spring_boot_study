@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="jakarta.persistence.EntityManagerFactory"/>
     <fullyQualifiedTypeName name="jakarta.persistence.EntityManager"/>
     <fullyQualifiedTypeName name="jakarta.persistence.EntityTransaction"/>
     <fullyQualifiedTypeName name="com.example.boot13.entity.Emp"/>
@@ -25,7 +24,6 @@
     <fullyQualifiedTypeName name="com.example.boot14.dto.GalleryDto"/>
     <fullyQualifiedTypeName name="java.util.Calendar"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
-    <fullyQualifiedTypeName name="java.lang.Exception"/>
     <fullyQualifiedTypeName name="com.example.boot14.service.CafeService"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
     <fullyQualifiedTypeName name="com.example.boot14.dto.CafeDto"/>
@@ -44,7 +42,6 @@
     <fullyQualifiedTypeName name="org.springframework.security.crypto.password.PasswordEncoder"/>
     <fullyQualifiedTypeName name="org.springframework.security.core.context.SecurityContextHolder"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PatchMapping"/>
-    <fullyQualifiedTypeName name="com.example.boot14.dto.UserDto"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
     <fullyQualifiedTypeName name="org.springframework.web.multipart.MultipartFile"/>
     <fullyQualifiedTypeName name="java.util.UUID"/>
@@ -52,12 +49,15 @@
     <fullyQualifiedTypeName name="org.junit.jupiter.api.Assertions"/>
     <fullyQualifiedTypeName name="com.example.boot14.repository.MemberDao"/>
     <fullyQualifiedTypeName name="org.springframework.boot.test.context.SpringBootTest"/>
-    <fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
     <fullyQualifiedTypeName name="org.springframework.test.web.servlet.MockMvc"/>
-    <fullyQualifiedTypeName name="org.junit.jupiter.api.Test"/>
-    <fullyQualifiedTypeName name="org.springframework.http.MediaType"/>
     <fullyQualifiedTypeName name="com.example.boot14.dto.MemberDto"/>
     <fullyQualifiedTypeName name="org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="com.fasterxml.jackson.databind.ObjectMapper"/>
+    <fullyQualifiedTypeName name="org.springframework.http.MediaType"/>
+    <fullyQualifiedTypeName name="org.junit.jupiter.api.Test"/>
+    <fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
+    <fullyQualifiedTypeName name="java.lang.Exception"/>
+    <fullyQualifiedTypeName name="com.example.boot14.dto.UserDto"/>
+    <fullyQualifiedTypeName name="org.springframework.security.test.context.support.WithUserDetails"/>
 </qualifiedTypeNameHistroy>

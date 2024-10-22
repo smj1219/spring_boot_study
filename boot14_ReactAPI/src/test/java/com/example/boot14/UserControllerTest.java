@@ -22,19 +22,24 @@ import com.example.boot14.service.UserService;
 import com.example.boot14.util.JwtUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+//spring boot application 을 테스트하기 위한 어노테이션
 @SpringBootTest
 @AutoConfigureMockMvc
 public class UserControllerTest {
 
+	// 컨트롤러를 테스트 할 수 있는 MockMvc 주입받기
     @Autowired
     private MockMvc mockMvc;
 
+    //UserService 객체 역활을 할 가짜 객체
     @MockBean
     private UserService userService;
 
+    //JwtUtil 객체 역활을 할 가짜 객체
     @MockBean
     private JwtUtil jwtUtil;
 
+    //인증을 처리할 실체 객체
     @MockBean
     private AuthenticationManager authManager;
 

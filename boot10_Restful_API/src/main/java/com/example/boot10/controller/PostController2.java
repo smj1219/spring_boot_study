@@ -30,14 +30,14 @@ public class PostController2 {
 	
 	
 	
-	@GetMapping("/post")
+	@GetMapping("/posts")
 	public List<PostDto> getList(){
 		//글 전체 목록을 서비스 객체를 이용해서 얻어온다음
 		List<PostDto> list=service.getAll();
 		return list;
 	}
 	
-	@GetMapping(value="/post/{id}")
+	@GetMapping(value="/posts/{id}")
 	public PostDto getdata(@PathVariable("id") int id) {
 		//서비스를 이용해서 글을 저장하고 리턴해주는 PosrDto 를 컨트롤러에서 리턴해준다
 		return service.getContent(id);
@@ -63,18 +63,18 @@ public class PostController2 {
 	 * 그러면 json 문자열의 key 값과 dto 의 필드명이 일치하면 데이터가 추출되어서 필드에 저장된다.
 	 * 
 	 */
-	@PostMapping("/post")
+	@PostMapping("/posts")
 	public PostDto insert(@RequestBody PostDto dto) {
 		return service.addContent(dto);
 	}
 	
 	// 삭제한 글 정보를 리턴하는 delete 메소드
-	@DeleteMapping(value="/post/{id}")
+	@DeleteMapping(value="/posts/{id}")
 	public PostDto delete(@PathVariable("id") int id) {
 		return service.removeContent(id);
 	}
 	
-	@PutMapping(value="/post/{id}")
+	@PutMapping(value="/posts/{id}")
 	public PostDto update(@PathVariable("id")int id,@RequestBody PostDto dto) {
 		//PostDto 에 경로 변수로 넘어오는 수정할 글번호도 담아서
 		dto.setId(id);

@@ -93,6 +93,12 @@
 		     <artifactId>jaxb-api</artifactId>
 		    <version>2.3.0</version>
 		</dependency>
+		<!-- json 문자열과 관련된 작업을 하기 위한 dependency -->
+		<dependency>
+		    <groupId>com.jayway.jsonpath</groupId>
+		    <artifactId>json-path</artifactId>
+		    <version>2.9.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>

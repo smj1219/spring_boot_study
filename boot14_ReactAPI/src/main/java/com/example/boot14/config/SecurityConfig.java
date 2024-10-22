@@ -35,7 +35,7 @@ public class SecurityConfig {
 		String[] whiteList= {"/image/upload","/upload/images/**", "/file/upload", "/file/download",
 				"/image/upload2", "/members/**", "/auth", "/gallery", "/gallery/**", 
 				"/editor_upload","/editor/images/**", "/cafes", "/cafes/**", "/members",
-				"/user/check_username/*"};
+				"/user/check_username/*","/index.html", "/static/**"};
 
 		//메소드의 매개변수에 HttpSecurity 의 참조값이 전달되는데 해당 객체를 이용해서 설정을 한다음
 		httpSecurity

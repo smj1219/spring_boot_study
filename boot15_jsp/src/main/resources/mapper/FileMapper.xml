@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="file">
+	<sql id="column">
+		num, writer, title, orgFileName,saveFileName, fileSize, regdate
+	</sql>
+	<sql id="search">
+		<choose>
+			<when test="condition == 'title_filename'">
+				WHERE title LIKE '%'||#{keyword}||'%' OR orgFileName LIKE '%'||#{keyword}||'%'
+			</when>
+			<when test="condition == 'title'">
+				WHERE title LIKE '%'||#{keyword}||'%'
+			</when>
+			<when test="condition == 'writer'">
+				WHERE writer LIKE '%'||#{keyword}||'%'
+			</when>
+		</choose>
+	</sql>
+	<select id="getFileList" resultType="filedto" parameterType="filedto">
+		SELECT *
+		FROM 
+			(SELECT result1.*, ROWNUM AS rnum
+			FROM
+				(SELECT <include refid="column"/> 
+				FROM board_file
+				<include refid="search"/>
+				ORDER BY num DESC) result1)
+		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+	</select>
+	<insert id="insert" parameterType="com.example.boot11.dto.FileDto">
+		INSERT INTO board_file
+		( <include refid="column"/> )
+		VALUES(board_file_seq.NEXTVAL, #{writer}, #{title}, 
+		#{orgFileName}, #{saveFileName}, #{fileSize}, SYSDATE)
+	</insert>
+	<select id="getData" parameterType="int" resultType="com.example.boot11.dto.FileDto">
+		SELECT <include refid="column"></include>
+		FROM board_file
+		WHERE num=#{num}
+	</select>
+	<delete id="deleteFile" parameterType="int">
+		DELETE FROM board_file
+		WHERE num=#{num}
+	</delete>
+	<select id="getCount" resultType="int">
+		SELECT NVL(MAX(ROWNUM), 0)
+		FROM board_file
+		<include refid="search"/>
+	</select>
+</mapper>
